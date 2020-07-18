@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Desarrollo de un Sistema Embebido para un Titulador Potenciométrico Automático} 
+\titulo{Desarrollo de un sistema embebido para un titulador potenciométrico automático} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -11,18 +11,18 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Ing. Fernando Ezequiel Daniele} 
+\autor{Fernando Ezequiel Daniele} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\director{Javier Andrés Redolfi}
+\pertenenciaDirector{UTN FRSFCO} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Grupo de Investigación y Desarrollo en Aplicaciones Inteligentes}
-\empresaCliente{Universidad Tecnológica Nacional Facultad Regional San Francisco}
+\cliente{Rebeca Yudith Yuan}
+\empresaCliente{GISAI - UTN FRSFCO}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -62,10 +62,13 @@
 \begin{tabularx}{\linewidth}{@{}|c|X|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
+\hline
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                                          & 22/06/2020 \\ \hline
-%1.1      & Ejemplo de un texto muy largo que debiera ocupar más de una línea para que tengan de ejemplo                                                                                																						   & dd/mm/aaaa \\ \hline
-%1.2      & Otro ejemplo \newline
+1.1      & Entrega semanas 2 - 3                                         & 11/06/2020 \\ 
+\hline
+1.2      & Correciones entrega semanas 2 - 3 & 18/06/2020  \\
+\hline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
 %		   A propósito                                                                     & dd/mm/aaaa \\ \hline
@@ -76,7 +79,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 
 
 
-\section{Acta de Constitución del Proyecto}
+\section{Acta de constitución del proyecto}
 \label{sec:acta}
 
 \begin{flushright}
@@ -85,7 +88,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema embebido para el control de un Titulador Potenciométrico Automático, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \$50.000, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema para el control de un titulador o valorador, y tendrá un presupuesto preliminar estimado de 640 hs de trabajo y \$50.000, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -105,58 +108,51 @@ Se adjunta a esta acta la planificación inicial.
 
 
 
-\section{Descripción técnica-conceptual del Proyecto a realizar}
+\section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{black}
-El prototipo en particular que desarrollaré forma parte de un proyecto interdisplinar gestado en el Grupo de Investigación Sobre Aplicaciones Inteligentes (GISAI) de la Universidad Tecnológica Nacional Facultad Regional San Francisco (UTN FRSFCO), cuyo objetivo es el desarrollo de un Titulador Potenciométrico Automático para el laboratorio de servicios de dicha facultad. El proyecto involucra docentes y alumnos de cuatro carreras de ingeniería, cuyas actividades se detallan a continuación:
+El prototipo en particular que se desarrollará forma parte de un proyecto interdisplinar gestado en el Grupo de Investigación Sobre Aplicaciones Inteligentes (GISAI) de la Universidad Tecnológica Nacional Facultad Regional San Francisco (UTN FRSFCO), cuyo objetivo es el desarrollo de un titulador potenciométrico automático para el laboratorio de servicios de la facultad. El proyecto involucra docentes y alumnos de cuatro carreras de ingeniería, cuyas actividades se detallan a continuación:
 \begin{itemize}
-	\item Ingeniería Química: aporta el conocimiento sobre el proceso de titulación y establece los requerimentos que deberá tener el sistema. 
-	\item Ingeniería Electromecánica: se encarga de diseñar y construir una bomba peristátilca y las partes mecánicas. 
-	\item Ingeniería en Sistemas de Información: se encarga de desarrollar un software para el procesamiento de los datos del cliente y los datos obtenidos del titulador. 
-	\item Ingeniería Electrónica: se encarga de diseñar el sistema embebido para el control automático del titulador. 
+	\item Ingeniería química: aporta el conocimiento sobre el proceso de titulación y establece los requerimentos que deberá tener el sistema. 
+	\item Ingeniería electromecánica: se encarga de diseñar y construir una bomba peristátilca y las partes mecánicas. 
+	\item Ingeniería en sistemas de información: se encarga de desarrollar un software para el procesamiento de los datos del cliente y los datos obtenidos del titulador. 
+	\item Ingeniería electrónica: se encarga de diseñar el sistema embebido para el control automático del titulador. 
 \end{itemize}
-El proyecto surge de la iniciativa del grupo GISAI de encarar un proyecto que involucre las cuatro ingenierías que forman parte de la UTN FRSFCO. Es en esa iniciativa que se propone el desarrollo de un titulador potenciométrico automático. Las titulaciones, también conocidas como valoraciones, son ampliamente utilizadas en química analítica para determinar la concentración de ácidos, bases, agentes oxidantes, agentes reductores, iones metálicos, proteínas y muchas otras especies químicas. Son métodos poderosos de análisis que se basan en la reacción de estequiometría definida, que se da entre un analito y un reactivo estándar conocido como titulante o valorante. Las titulaciones pueden ser realizadas en forma manual o automática. Actualmente existen en el mercado tituladores de operación automatizada que determinan la concentración de diferentes analitos, pero estos equipos son económicamente inaccesibles para universidades y laboratorios en los que existe una frecuencia baja de muestras a analizar. Estas dificultades traen aparejada poca celeridad en la obtención de resultados de manera convencional y vuelve a los laboratorios universitarios poco competentes frente a la demanda de análisis. La Facultad Regional San Francisco no cuenta con equipos automatizados para la realización de distintos ensayos útiles en las áreas de Ingeniería Química y Electromecánica. El por eso que el proyecto genereal busca desarrollar un prototipo de titulador automático para el empleo en diferentes valoraciones ácido-base. Este prototipo se destinará a la automatización de los procesos de titulación manuales llevados a cabo en el laboratorio de servicios a terceros que funciona en la Universidad, así como también en los grupos de I+D, y cátedras de la carrera de ingeniería Química y Electromecánica, que utilizan este tipo de técnicas.
-El caso de mi proyecto en particular se enfoca en el desarrollo del sistema embebido, el cuál será el encargado de automatizar el proceso de titulación. Este proceso consiste en inyectar mediante la bomba la solución titulante en la muestra a analizar. Durante todo el proceso se debe realizar la lectura del potencial que entrega un electrodo de pH situado en el recipiente de la muestra, y tabular los datos del potencial y de volumen añadido para poder obtener la curva de titulación. A través de estos datos es posible determinar el volumen (o los volúmenes) de titulante correspondiente al momento en el cual la curva posee un punto de inflexión, es decir, cuando la derivada segunda del potencial respecto al volumen utilizado de titulante se hace cero. Ese valor es el que utilizará el software y el analista para determinar la sustancia desconocida.
-
-El presente proyecto se destaca especialmente porque sienta las bases de un trabajo interdisciplinar, enfocado en obtener un producto económico, de código y hardware abierto, adecuado a las necesidades de la facultad, y con la posibilidad de se realizar modificaciones o mejoras futuras.
-
-%\begin{itemize}
-%\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-%\item ¿Cuales son las necesidades que debe satisfacer?
-%\item ¿Por dónde pasa la innovación?
-%\end{itemize}
-
-En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que el mismo consta de los siguientes componentes:
+El proyecto surge de la iniciativa del grupo GISAI de encarar un proyecto que involucre las cuatro ingenierías que forman parte de la UTN FRSFCO. Es en esa iniciativa que se propone el desarrollo de un titulador potenciométrico automático.\\
+Las titulaciones, también conocidas como valoraciones, son ampliamente utilizadas en química analítica para determinar la concentración de ácidos, bases, agentes oxidantes, agentes reductores, iones metálicos, proteínas y muchas otras especies químicas. Son métodos poderosos de análisis que se basan en la reacción de estequiometría definida, que se da entre un analito y un reactivo estándar conocido como titulante o valorante.\\
+Las titulaciones pueden ser realizadas en forma manual o automática. Actualmente existen en el mercado tituladores de operación automatizada que determinan la concentración de diferentes analitos, pero estos equipos son económicamente inaccesibles para universidades y laboratorios en los que existe una frecuencia baja de muestras a analizar. Estas dificultades traen aparejada poca celeridad en la obtención de resultados de manera convencional y vuelve a los laboratorios universitarios poco competentes frente a la demanda de análisis.\\
+ La UTN FRSFCO no cuenta con equipos automatizados para la realización de distintos ensayos útiles en las áreas de ingeniería química y electromecánica. El por eso que el proyecto general busca desarrollar un prototipo de titulador automático para el empleo en diferentes valoraciones ácido-base.\\
+ Este prototipo se destinará a la automatización de los procesos de titulación manuales llevados a cabo en el laboratorio de servicios a terceros que funciona en la universidad, así como también en los grupos de I+D, y cátedras de la carrera de ingeniería química y electromecánica, que utilizan este tipo de técnicas.\\
+El caso de este proyecto en particular se enfoca en el desarrollo del sistema embebido que será el encargado de automatizar el proceso de titulación. Este proceso consiste en inyectar mediante la bomba la solución titulante en la muestra a analizar. Durante todo el proceso se debe realizar la lectura del potencial que entrega un electrodo de pH situado en el recipiente de la muestra, y tabular los datos del potencial y de volumen añadido para poder obtener la curva de titulación. A través de estos datos es posible determinar el volumen (o los volúmenes) de titulante correspondiente al momento en el cual la curva posee un punto de inflexión, es decir, cuando la derivada segunda del potencial respecto al volumen utilizado de titulante se hace cero. Ese valor es el que utilizará el software y el analista para determinar la sustancia desconocida.\\
+El presente proyecto se destaca especialmente porque sienta las bases de un trabajo interdisciplinar, enfocado en obtener un producto económico, de código y hardware abierto, adecuado a las necesidades de la facultad, y con la posibilidad de realizar modificaciones o mejoras futuras.\\
+En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. A continuación se detallan cada uno de sus componentes:
 \begin{itemize}
-\item Un módulo ESP32-DevKitC, el cual incluye un microprocesador dual Core de 32 bits y WiFi integrado, entre otros. El microprocesador es el encargado de controlar el resto de los componentes. En cuanto al WiFi, será el medio de conexión para que un usuario pueda acceder a una página web almecenada en la memoria del módulo, en la cual se podrá visualizar los datos obtenidos en el proceso de titulación.
-\item Una interfaz de usuario compuesta por una pantalla TFT táctil de 2.4 pulgadas, mediante la cual el usuario será capaz de configurar el dispositivo, realizar la calibración del mismo, y dar inicio al proceso de titulación.
-\item Un lector de tarjetas SD, que se encuentra en el mismo módulo de la pantalla, donde se guardarán los datos obtenidos en la titulación.
-\item Una bomba peristáltica, encargada de dosificar el titulante en el recipiente de la muestra.
-\item Un electrodo encargado de realizar la medición de pH.
-\item Un agitador compuesto por un motor de CC, encargado de mezclar el titulante con la muestra.
-\item Una sensor de temperatura, que puede o no situarse en el recipiente de la muestra.
+\item Módulo ESP32-DevKitC: incluye un microprocesador dual Core de 32 bits y WiFi integrado, entre otros. El microprocesador es el encargado de controlar el resto de los componentes. En cuanto al WiFi, será el medio de conexión para que un usuario pueda acceder a una página web almecenada en la memoria del módulo, y visualizar los datos obtenidos en el proceso de titulación.
+\item Interfaz de usuario: compuesta por una pantalla TFT táctil de 2,4 pulgadas. Le permitirá al usuario configurar el dispositivo, realizar la calibración del mismo, dar inicio al proceso de titulación y visualizar datos.
+\item Lector de tarjetas SD: se encuentra en el mismo módulo de la pantalla, donde se guardarán los datos obtenidos en la titulación.
+\item Bomba peristáltica: se encarga de dosificar el titulante en el recipiente de la muestra.
+\item Electrodo: es el encargado de realizar la medición de pH.
+\item Agitador: compuesto por un motor de CC. Realiza la mezcla el titulante con la muestra.
+\item Sensor de temperatura: puede o no situarse en el recipiente de la muestra.
 \end{itemize}
 
 
-\vspace{25px}
+%\vspace{25px}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/diagBloques.jpg}
+\includegraphics[width=1\textwidth]{./Figuras/diagBloques.jpg}
 \caption{Diagrama en bloques del sistema}
 \label{fig:diagBloques}
 \end{figure}
 
-\vspace{25px}
+%\vspace{25px}
 
-\end{consigna}
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{black} 
 %Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
  
 %Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
@@ -177,8 +173,7 @@ En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistem
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   & \clientename      &\empclientename 	&    -    	\\ \hline
-Cliente       & \clientename      &\empclientename	&    -    	\\ \hline
+Cliente       & \clientename      &\empclientename	& Directora de proyecto    	\\ \hline
 %Impulsor      &        -          &      -        	&    -    	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
 %Colaboradores &    -              &    -          	&  -      	\\ \hline
@@ -202,25 +197,22 @@ Usuario final & Laboratorio de Servicios & UTN FRSCO & -        	\\ \hline
 %\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
 %\end{itemize}
 
-\end{consigna}
-
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{black}
+
 El propósito de este proyecto es desarrollar el prototipo de un sistema embebido que permita automatizar y controlar el ensayo de titulación potenciométrica.
-\end{consigna}
+
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{black}
 El proyecto incluye:
 \begin{itemize}
-\item Una interfaz de usuario que permite la configuración y calibracion del dispositivo, asi como también dar inicio al proceso de titulación.
+\item Una interfaz de usuario que permite la configuración y calibración del dispositivo, asi como también dar inicio al proceso de titulación.
 \item La visualización de la curva de potencial respecto al volumen de titulante inyectado.
 \item El control de la bomba que inyecta el titulante en la muestra
-\item El cálculo y visualización del resultado de la titulación, el cual es el volumen de titulante utilizado en el momento en el cual se produce un punto de inflexión en la curva.
+\item El cálculo y visualización del resultado de la titulación. El resultado es el volumen de titulante utilizado al momento de producirse un punto de inflexión en la curva.
 \item El almacenamiento de los datos del ensayo en una memoria SD
 \item La visualización de los datos del ensayo en una página web, a través de una conexión wifi local.
 \end{itemize}
@@ -230,12 +222,10 @@ El proyecto no incluye:
 \item El manejo del dispositivo de manera remota.
 \item El diseño de gabinetes u otras partes mecánicas. 
 \end{itemize}
-\end{consigna}
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{black}
 Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
@@ -244,27 +234,25 @@ Para el desarrollo del presente proyecto se supone que:
 \item El aislamiento y/o distanciamento preventivo social y obligatorio no impidedirá la adquisición de materiales ni retrasará las pruebas y verificaciones del dispositivo.
 \end{itemize}
 
-\end{consigna}
-
 \section{4. Requerimientos} %Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
 \label{sec:requerimientos}
-\begin{consigna}{black}
+
 \begin{enumerate}
 \item Grupo de requerimientos asociados con interfaces externas
 	\begin{enumerate}
 	\item El dispositivo deberá tener una pantalla táctil a través de la cual el usuario podrá interactuar con un menú de navegación.
 	\item El menú deberá incluir una opción de configuración, una de calibración, una de titulación y otra de conexión.
-	\item La opción de configuración deberá permitir elegir los valores de tres muestras patrones (buffers) que se utilizarán en la calibración.
+	\item La opción de configuración deberá permitir elegir los valores de tres muestras patrones \textit{(buffers)} que se utilizarán en la calibración.
 	\item La opción configuración deberá permitir elegir el volumen de corte de la titulación.
 	\item La opción configuración deberá permitir elegir si utilizar o no el agitador.
-	\item La opción calibración deberá permitir elegir con cual de los tres buffers se calibrará y dar la opción de guardar el valor leído una vez realizada la medición. También debe dar la opción de cancelar sin guardar.
+	\item La opción calibración deberá permitir elegir con cual de los tres \textit{buffers} se calibrará y dar la opción de guardar el valor leído una vez realizada la medición. También debe dar la opción de cancelar sin guardar.
 	\item La opción de titulación debe pedir al usuario que acepte el inicio del ensayo o regresar al menú principal. En caso de aceptar, debe mostrar el valor actual leído y una gráfica de pH en el eje de la ordenadas y de volumen de titulante añadido en el eje de las abcisas.
 	\item La opción conexión debe mostrar los datos para que un dispositivo pueda conectarse a la red wifi del titulador. 
 	\end{enumerate}
 	
 \item Grupo de requerimientos asociados con funciones
 	\begin{enumerate}
-	\item El sistema deberá ser capaz de leer y mostrar el potencial entregado por un electrodo de pH, con una resolución de 1 mV para la lectura del potencial y de 0.01 pH para su conversión a pH.
+	\item El sistema deberá ser capaz de leer y mostrar el potencial entregado por un electrodo de pH, con una resolución de 1 mV para la lectura del potencial y de 0,01 pH para su conversión a pH.
 	\item El sistema deberá ser capaz de controlar la cantidad de pasos que realiza un motor paso a paso bipolar asociado a la bomba, asi como también el tiempo entre cada paso.
 	\item Cada paso debe producir la inyección de titulante en la muestra en una cantidad máxima de 0,1 ml por paso.
 	\item El tiempo mínimo de espera entre cada paso debe ser de 1 segundo luego que la lectura de potencial se haya estabilizado.
@@ -280,22 +268,11 @@ Para el desarrollo del presente proyecto se supone que:
 	\item El sistema deberá ser capaz de guardar en la memoria sd todos los datos generados en una titulación. Al iniciar otro proceso de titulación, los datos de la titulación anterior serán eliminados.
 	\end{enumerate}
 \end{enumerate}
-%Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-%De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
-%Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
-%No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-%Y al escribirlos seguir las siguientes reglas:
-%\begin{itemize}
-%\item Ser breve y conciso (nadie lee cosas largas). 
-%\item Ser específico: no dejar lugar a confusiones.
-%\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-%\end{itemize}
-\end{consigna}
+
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{black} 
 \begin{itemize}
 \item Prototipo funcional
 \item Manual de uso
@@ -303,21 +280,18 @@ Para el desarrollo del presente proyecto se supone que:
 \item Código fuente
 \item Memoria técnica
 \end{itemize}
-\end{consigna}
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{black}
-
 \begin{enumerate}
-\item Investigación y documentación (60hs)
+\item Investigación y documentación (60 hs)
 	\begin{enumerate}
 	\item Analizar diferentes procesos de titulación y tituladores del mercado (10 hs)
 	\item Seleccionar los componetes adecuados con sus respectivas hojas de datos(10 hs)
 	\item Analizar el funcionamiento de los compontentes (40 hs)
 	\end{enumerate}
-\item Diseño general (50hs)
+\item Diseño general (50 hs)
 	\begin{enumerate}
 	\item Diseño de diagrama de módulos (10 hs)
 	\item Diseño de diagramas de flujo (10 hs)
@@ -359,8 +333,6 @@ Para el desarrollo del presente proyecto se supone que:
 \end{enumerate}
 
 Cantidad total de horas: (640 hs)
-
-\end{consigna}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
