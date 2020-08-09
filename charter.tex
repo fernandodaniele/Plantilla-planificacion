@@ -5,10 +5,6 @@
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
-%\posgrado{Carrera de Especialización en Internet de las Cosas} 
-%\posgrado{Carrera de Especialización en Intelegencia Artificial}
-%\posgrado{Maestría en Sistemas Embebidos} 
-%\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
 \autor{Fernando Ezequiel Daniele} 
@@ -37,6 +33,7 @@
 \fechaFINALTrabajo{31 de junio de 2021}		%Fecha de defensa pública del trabajo final
 
 \usepackage[section]{placeins}
+\usepackage{pdflscape}
 
 \begin{document}
 
@@ -73,6 +70,8 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.3      & Entrega semanas 3 - 4 & 31/07/2020  \\ \hline
 1.4      & Se cambiaron requerimentos & 05/08/2020 \\ \hline
 1.5      & Entrega semanas 4 - 5 & 07/08/2020  \\ \hline
+1.6      & Correciones entregas semanas 3 - 5 & 09/08/2020  \\ \hline
+1.6      & Entrega semana 5 - 6 & 09/08/2020  \\ \hline
 %		   Con texto partido \newline
 %		   En varias líneas \newline
 %		   A propósito                                                                     & dd/mm/aaaa \\ \hline
@@ -110,8 +109,6 @@ Se adjunta a esta acta la planificación inicial.
 \end{table}
 
 
-
-
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
@@ -140,13 +137,14 @@ En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistem
 \item Sensor de temperatura: puede o no situarse en el recipiente de la muestra.
 \end{itemize}
 
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.9\textwidth]{./Figuras/diagBloques.jpg}
+\caption{Diagrama en bloques del sistema}
+\label{fig:diagBloques}
+\end{figure}
 
-%\vspace{25px}
-
-
-
-%\vspace{25px}
-
+\vspace{25px}
 
 
 \section{Identificación y análisis de los interesados}
@@ -197,12 +195,7 @@ Usuario final & Laboratorio de Servicios & UTN FRSCO & -        	\\ \hline
 %\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
 %\end{itemize}
 
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=1\textwidth]{./Figuras/diagBloques.jpg}
-\caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
-\end{figure}
+
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
@@ -264,7 +257,7 @@ El usuario podrá elegir mediante la pantalla táctil el volumen de corte de la 
 	\item Los valores de potencial obtenidos en el proceso de la calibración se deben guardar en la memoria flash del ESP32. [TPA-ERS-01-REQ005]
 	\item El valor de pH se debe calcular de manera proporcional a la recta de ajuste de los valores de potencial obtenidos en la calibración. [TPA-ERS-01-REQ006]
 	\item El usuario podrá dar inicio al proceso de titulación mediante la pantalla táctil. [TPA-ERS-01-REQ007]
-	\item Durante la titulación, la pantalla debe mostrar el valor actual leído en mV y en pH y una gráfica de pH en el eje de la ordenadas y de volumen de titulante añadido en el eje de las abcisas. [TPA-ERS-01-REQ008]
+	\item Durante la titulación, la pantalla debe mostrar el valor actual leído en mV y en pH y una gráfica de pH en el eje de la ordenadas y de volumen de titulante añadido en el eje de las abscisas. [TPA-ERS-01-REQ008]
 	\item Cada valor de volumen añadido junto al valor de potencial asociado durante el proceso de titulación deben almacenarse en un archivo de texto en la tarjeta sd. No es necesario que esto se haga en tiempo real. Al iniciar otro proceso de titulación, los datos de la titulación anterior serán eliminados. [TPA-ERS-01-REQ009]
 	\item Cada valor de volumen añadido junto al valor de potencial asociado durante el proceso de titulación deben mostrarse en una página web almacenada en la memoria flash. [TPA-ERS-01-REQ010]
 	\item El usuario podrá acceder a la página web mediante una conexión wifi. No es necesario que esto se haga en tiempo real. [TPA-ERS-01-REQ011]
@@ -295,11 +288,55 @@ El usuario podrá elegir mediante la pantalla táctil el volumen de corte de la 
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema.
+En esta sección se detallan las historias de usuario expresadas desde el punto de vista del analista del laboratorio de servicios. Tanto la prioridad como la ponderación de cada historia tienen una escala de 0 a 
+10.
 
-La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
-\end{consigna}
+\begin{itemize}
+\item Historia de usuario 1\\El analista desea que la titulación se realice de manera automática, es decir, que el titulante ingrese en el recipiente de la solución y se registren las cantidades de volumen ingresado y la lectura del potencial del electrodo.
+	\begin{itemize}
+	\item Prioridad: 10
+	\item Ponderación: 9
+	\end{itemize}
+
+\vspace{25px}
+
+\item Historia de usuario 2\\El analista desea que todas las mediciones de pH y volumen queden almacenadas en una memoria SD, para poder acceder luego desde una computadora.
+	\begin{itemize}
+	\item Prioridad: 7
+	\item Ponderación: 5 
+	\end{itemize}
+
+\item Historia de usuario 3\\El analista desea visualizar los resultados en una página web.
+	\begin{itemize}
+	\item Prioridad: 6
+	\item Ponderación: 8
+	\end{itemize}
+	
+\item Historia de usuario 4\\El analista desea realizar una calibración del electrodo de pH con tres muestras patrones.
+	\begin{itemize}
+	\item Prioridad: 8
+	\item Ponderación: 7
+	\end{itemize}
+	
+\item Historia de usuario 5\\El analista desea tener de la posibilidad de modificar el volumen de corte que determina el fin del proceso entre 50 mL y 100 mL.
+	\begin{itemize}
+	\item Prioridad: 8
+	\item Ponderación: 4
+	\end{itemize}
+	
+\item Historia de usuario 6\\El analista desea que el sistema realice el cálculo del volumen de titulante inyectado correspondiente al punto de inflexión de la curva de potencial respecto al volumen.
+	\begin{itemize}
+	\item Prioridad: 9
+	\item Ponderación: 6
+	\end{itemize}
+	
+\item Historia de usuario 7\\El analista desea tener de la posibilidad de modificar el valor de los tres buffers que utilizará en la calibración, en un rango de pH entre 0 y 14.
+	\begin{itemize}
+	\item Prioridad: 8
+	\item Ponderación: 4
+	\end{itemize}
+	
+\end{itemize}
 
 
 \section{5. Entregables principales del proyecto}
@@ -310,6 +347,7 @@ La ponderación es un número entero que representa el tamaño de la historia co
 \item Manual de uso
 \item Diagrama esquemático
 \item Código fuente
+\item Documentación
 \item Memoria técnica
 \end{itemize}
 
@@ -351,9 +389,7 @@ La ponderación es un número entero que representa el tamaño de la historia co
 	\item Calibración del módulo de control de la bomba (20 hs)
 	\item Puesta en funcionamiento  (5 hs)
 	\end{enumerate}
-	
-\vspace{25px}
-	
+		
 \item Testing (100hs)
 	\begin{enumerate}	
 	\item Test de cada módulo de software (40 hs)
@@ -369,11 +405,13 @@ La ponderación es un número entero que representa el tamaño de la historia co
 
 Cantidad total de horas: (640 hs)
 
+\vspace{25px}
+
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 %La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
 %\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-En la Figura 2 se muestra el diagrama de Activity on Node del proyecto. Se observa que la línea remarcada indica el camino crítico del proyecto, con un total de 620 horas.
+En la figura \ref{fig:AoN} se muestra el diagrama de Activity on Node del proyecto. Se observa que la línea remarcada indica el camino crítico del proyecto, con un total de 620 horas.
 
 \begin{figure}[htpb]
 \centering 
@@ -385,20 +423,23 @@ En la Figura 2 se muestra el diagrama de Activity on Node del proyecto. Se obser
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
 
+En la figura \ref{fig:tablaGantt} se muestra las tareas con sus respectivas fechas iniciales y finales. Para la duración de los días se estimó una jornada de trabajo de 2 horas diarias. Para el grupo de tareas con código 1-2 y 5-7 se consideraron los días  de trabajo de lunes a viernes. Para el grupo de tareas con código 3-4 se incluyen también los días sábado. 
+
 \begin{figure}[htpb]
 \centering 
 \includegraphics[width=1\textwidth]{./Figuras/TablaGantt.png}
-\caption{Diagrama de Gantt: Tabla}
+\caption{Diagrama de Gantt: tabla}
 \label{fig:tablaGantt}
 \end{figure}
 
-\begin{figure}[htpb]
-
+\begin{landscape}
+\begin{figure}[p]
 \centering 
-\includegraphics[width=1\textwidth]{./Figuras/DiagramaGantt.png}
-\caption{Diagrama de Gantt: Gráfico}
+\includegraphics[width=1.5\textwidth]{./Figuras/DiagramaGantt.png}
+\caption{Diagrama de Gantt: gráfico}
 \label{fig:diagramaGantt}
 \end{figure}
+\end{landscape}
 
 \section{9. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
@@ -406,19 +447,19 @@ En la Figura 2 se muestra el diagrama de Activity on Node del proyecto. Se obser
 \begin{table}[htpb]
 \label{tab:recursos}
 
-\begin{tabularx}{\linewidth}{@{}|c|c|c|c|c|c|c|X|@{}}
+\begin{tabularx}{\linewidth}{@{}|c|X|c|c|c|c|c|c|@{}}
 \hline
 \cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{6}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-8} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre\end{tabular}} 
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre tarea\end{tabular}} 
 & PC & Módulo  & Electrodo  & Bomba    & SD   & Insumos\\
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}} WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}  tarea\end{tabular}} &  & pantalla  &  &     &  & varios\\ \hline
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}} WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}  \end{tabular}} &  & pantalla  &  &     &  & varios\\ \hline
 1& Investigación  &60  &  &  &&  &\\
-& documentación   &60  &  &  &&  &\\ \hline
+& documentación   &  &  &  &&  &\\ \hline
 2& Diseño general  &50  &  &  &&  &\\ \hline
 3& Desarrollo de hardware &  &  &  & & &20\\ \hline
 4& Desarrollo del firmware   &280  &  &  & & &\\ \hline
 5& Calibración y puesta &5  &60  &30  &25 &5 &\\ 
-5& en funcionamiento  &5  &60  &30  &25 &5 &\\ \hline
+5& en funcionamiento  &  & &  & & &\\ \hline
 6& Testing 	 &100  &100  &100  &100 &100 &\\ \hline
 7&Presentación del trabajo   &80  &  &  & & &\\ \hline
 \end{tabularx}%
@@ -452,11 +493,11 @@ Driver drv8825&
   \multicolumn{1}{c|}{2} &
   \multicolumn{1}{c|}{\$400} &
   \multicolumn{1}{c|}{\$800} \\ \hline
-Modulo Ph-4502c&
+Módulo Ph-4502c&
   \multicolumn{1}{c|}{1} &
   \multicolumn{1}{c|}{\$4000} &
   \multicolumn{1}{c|}{\$4000} \\ \hline
-Modulo Ph-4502c&
+Módulo Ph-4502c&
   \multicolumn{1}{c|}{1} &
   \multicolumn{1}{c|}{\$4000} &
   \multicolumn{1}{c|}{\$4000} \\ \hline
@@ -510,10 +551,10 @@ Insumos varios&
 \rowcolor[HTML]{C0C0C0} 
 \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
   \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
-  \authorname &
-  \supname &
+  Fernando E. Daniele &
+  Javier A. Redolfi&
   Anchino y Depetris &
-  \clientename \\ \hline
+  M. Eugenia Taverna \\ \hline
 1& Investigación  &P  &C & &C  \\ 
 & documentación   & && &  \\ \hline
 2& Diseño   &P  &I &C &A  \\ 
@@ -547,14 +588,13 @@ Referencias:
 
 a) Identificación de los riesgos y estimación de sus consecuencias:
  
-Riesgo 1 La presicición y resolución de las mediciones no cumplen con los requerimentos
+Riesgo 1 La precisión y resolución de las mediciones no cumplen con los requerimentos
 \begin{itemize}
 \item Severidad (S): 9 (nueve) porque la medición de volumen y de potencial son críticas para el resultado final.
-\item Ocurrencia (O): 6 (seis) porque la medición del potencial puede verse afectada por el ruido, lo cual es bajo. La medición de volumen, en cambio, no se hace de manera directa ya que el prototipo inicial es un lazo abierto y depende exclusivamente de la presición de la bomba.
-(ver que lo de lazo abierto este explicado antes y que este como requisito futuro un lazo cerrado)
+\item Ocurrencia (O): 6 (seis) porque la medición del potencial puede verse afectada por el ruido, lo cual es bajo. La medición de volumen, en cambio, no se hace de manera directa ya que el prototipo inicial es un lazo abierto y depende exclusivamente de la precisión de la bomba.
 \end{itemize} 
 
-Riesgo 2 Caracteristicas del hardware seleccionado insuficientes para satisfacer las necesidades del sistema.
+Riesgo 2 Características del hardware seleccionado insuficientes para satisfacer las necesidades del sistema.
 \begin{itemize}
 \item Severidad (S): 8 (ocho) porque puede ocasionar funcionamiento defectuoso.
 \item Ocurrencia (O): 2 (dos) porque se selecionó un procesador que puede hacer frente a los requerimientos establecidos, tanto presentes como futuros.
@@ -565,6 +605,8 @@ Riesgo 3 Errores de diseño o fabricación en el prototipo del PCB
 \item Severidad (S): 7 (siete) porque puede ocasionar retrasos o daños en otros componentes.
 \item Ocurrencia (O): 2 (dos) porque su diseño y fabricación serán verificados y validados por los colaboradores.
 \end{itemize} 
+
+\vspace{75px}
 
 Riesgo 4 Imposibilidad de cumplir los plazos planteados
 \begin{itemize}
@@ -602,15 +644,15 @@ Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplic
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1 Se realizarán pruebas en la presición y resolución de la bomba para evaluar si es necesario un lazo cerrado.
+Acción de mitigación del riesgo 1 Se realizarán pruebas en la precisión y resolución de la bomba para evaluar si es necesario un lazo cerrado.
 \begin{itemize}
-\item Severidad (S): 6 (nueve) mediante la técnica de microstepping se puede ajustar la resolución de la bomba. La incorporación de un control de lazo cerrado se dejan tanto como requisito futuro de hardware y de software.
-\item Ocurrencia (O): 3 (cuatro) porque se podrán realizar modificaciones a pedido en la bomba en caso de no cumplir con los requisitos de presición.
+\item Severidad (S): 6 (seis) mediante la técnica de \textit{microstepping} se puede ajustar la resolución de la bomba. La incorporación de un control de lazo cerrado se deja como requisito futuro de hardware y de software.
+\item Ocurrencia (O): 3 (tres) porque se podrán realizar modificaciones a pedido en la bomba en caso de no cumplir con los requisitos de precisión.
 \end{itemize} 
 
-Riesgo 5: Se utilizará un electrodo que dispone el laboratorio de química.
+Acción de mitigación del riesgo 5: Se utilizará un electrodo que dispone el laboratorio de química.
 \begin{itemize}
-\item Severidad (S): 4 (cuatro) porque permitirá realizar todas las pruebas y validaciones necesarias.
+\item Severidad (S): 4 (cuatro) porque es necesario para realizar todas las pruebas y validaciones necesarias.
 \item Ocurrencia (O): 1 (uno) porque se estableció como posibilidad en caso de no contar con el electrodo solicitado en tiempo y forma.
 \end{itemize}
 
@@ -620,7 +662,7 @@ Riesgo 5: Se utilizará un electrodo que dispone el laboratorio de química.
 \label{sec:calidad}
 
 \begin{enumerate}
-\item Interfaces Externas
+\item Interfaces externas
 	\begin{enumerate}
 	\item El hardware deberá contar con una pantalla TFT táctil. [TPA-ERH-01-REQ001]
 	\begin{itemize}
@@ -681,7 +723,7 @@ El usuario podrá elegir mediante la pantalla táctil el volumen de corte de la 
 \item Verificación: Se implementará una opción que permita dar inicio al proceso.\\
 \item Validación: Se hará una prueba de titulación.\\
 \end{itemize}
-	\item Durante la titulación, la pantalla debe mostrar el valor actual leído en mV y en pH y una gráfica de pH en el eje de la ordenadas y de volumen de titulante añadido en el eje de las abcisas. [TPA-ERS-01-REQ008]
+	\item Durante la titulación, la pantalla debe mostrar el valor actual leído en mV y en pH y una gráfica de pH en el eje de la ordenadas y de volumen de titulante añadido en el eje de las abscisas. [TPA-ERS-01-REQ008]
 	\begin{itemize}
 \item Verificación: Se implementará una función que calcule y muestre los valores solicitados.\\
 \item Validación: Se hará una prueba de titulación.\\
@@ -690,7 +732,7 @@ El usuario podrá elegir mediante la pantalla táctil el volumen de corte de la 
 	\item Cada valor de volumen añadido junto al valor de potencial asociado durante el proceso de titulación deben almacenarse en un archivo de texto en la tarjeta sd. No es necesario que esto se haga en tiempo real. Al iniciar otro proceso de titulación, los datos de la titulación anterior serán eliminados. [TPA-ERS-01-REQ009]
 	\begin{itemize}
 \item Verificación: Se implementará una función que realice el guardado en memoria.\\
-\item Validación: Se leeran los datos guardados de una titulación a través de una computadora.\\
+\item Validación: Se leerán los datos guardados de una titulación a través de una computadora.\\
 \end{itemize}
 
 	\item Cada valor de volumen añadido junto al valor de potencial asociado durante el proceso de titulación deben mostrarse en una página web almacenada en la memoria flash. [TPA-ERS-01-REQ010]
@@ -705,7 +747,7 @@ El usuario podrá elegir mediante la pantalla táctil el volumen de corte de la 
 \item Validación: Se conectará una dispositivo a la red generada por el módulo wifi para acceder a la página web.\\
 \end{itemize}
 
-	\item El sistema deberá ser capaz de leer y mostrar el potencial entregado por un electrodo de pH, con una resolución de 1 mV para la lectura del potencial y de 0.01 pH para su conversión a pH. Para ello se utilizará el conversor analógico de 12 bits incorporado en el ESP32. [TPA-ERS-01-REQ012]
+	\item El sistema deberá ser capaz de leer y mostrar el potencial entregado por un electrodo de pH, con una resolución de 1 mV para la lectura del potencial y de 0,01 pH para su conversión a pH. Para ello se utilizará el conversor analógico de 12 bits incorporado en el ESP32. [TPA-ERS-01-REQ012]
 	\begin{itemize}
 \item Verificación: Se implementará una función que calcule el valor de pH y de potencial a través de la medición del ADC.\\
 \item Validación: Se alimentará la entrada del ADC con una fuente de tensión regulable con una resolución mínima de 1 mV. Se variará la tensión de la fuente para abarcar el rango de 0 a 5 V.\\
@@ -713,7 +755,7 @@ El usuario podrá elegir mediante la pantalla táctil el volumen de corte de la 
 
 	\item El sistema deberá enviar pulsos de 10 ms de ciclo útil al pin step del módulo dvr8825. El tiempo mínimo de espera entre cada pulso debe ser de 1 segundo luego que la lectura de potencial se haya estabilizado. El sistema dejará de enviar los pulsos cuando se haya inyectado la cantidad de volumen indicada por el usuario como volumen de corte. [TPA-ERS-01-REQ013]
 	\begin{itemize}
-\item Verificación: Se implementará una función que envie por un puerto digital la salida especificada.\\
+\item Verificación: Se implementará una función que envíe por un puerto digital la salida especificada.\\
 \item Validación: Se conectará un osciloscopio al pin digital para medir la salida.\\
 \end{itemize}
 
@@ -725,6 +767,8 @@ El usuario podrá elegir mediante la pantalla táctil el volumen de corte de la 
 
 
 \end{enumerate}
+
+\vspace{25px}
 
 \item Requisitos de Rendimiento
 	\begin{enumerate}
